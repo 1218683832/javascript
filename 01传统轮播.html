@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>传统轮播图</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 560px;
+            height: 300px;
+            border: 5px solid gray;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .m_unit {
+            background-color: aquamarine;
+            width: 3000px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        /*轮播图*/
+        .m_unit>ul {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .m_unit>ul>li {
+            list-style: none;
+            float: left;
+            width: 560px;
+            height: 300px;
+        }
+
+        /*左右按钮*/
+        .btn>span {
+            width: 55px;
+            height: 55px;
+            background-color: gray;
+            position: absolute;
+            top: 50%;
+            margin-top: -28px;
+        }
+
+        .btn>span.left {
+            background: url('images/dog/btnL.png');
+            left: 0;
+        }
+
+        .btn>span.right {
+            background: url('images/dog/btnR.png');
+            right: 0;
+        }
+
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /*小圆点*/
+        .circle>ul>li {
+            list-style: none;
+            float: left;
+            width: 10px;
+            height: 10px;
+            opacity: 0.75;
+            background: gray;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .circle>ul>li.current {
+            opacity: 1.0;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container" id="container">
+        <div class="m_unit" id='m_unit'>
+            <ul>
+                <li><a href="#"><img src="images/dog/0.jpg" alt="" /></a></li>
+                <li><a href="#"><img src="images/dog/1.jpg" alt="" /></a></li>
+                <li><a href="#"><img src="images/dog/2.jpg" alt="" /></a></li>
+                <li><a href="#"><img src="images/dog/3.jpg" alt="" /></a></li>
+                <li><a href="#"><img src="images/dog/4.jpg" alt="" /></a></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <span class="left" id='leftBtn'></span>
+            <span class="right" id='rightBtn'></span>
+        </div>
+        <div class="circle" id='circle'>
+            <ul>
+                <li class='current'></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script src="" async defer></script>
+    <script>
+        // 获取移动单元
+        var m_unit = document.getElementById('m_unit');
+        // 获取左右按钮
+        var leftBtn = document.getElementById("leftBtn");
+        var rightBtn = document.getElementById("rightBtn");
+        // 获取小圆点数组
+        var circlelist = document.getElementById("circle").getElementsByTagName("li");
+        // 获取滚动的个数
+        var length = circlelist.length;
+        // 声明信号量idx
+        var idx = 0;
+        for (let index = 0; index < circlelist.length; index++) {
+            const element = circlelist[index];
+            if (element.className == "current") {
+                idx = index;
+                break;
+            }
+        }
+        // 左按钮绑定点击事件
+        leftBtn.onclick = function () {
+            if (idx < length - 1) {// 已到最右
+                idx++;
+            } else {
+                idx = 0;
+            }
+            // 根据idx切换图片
+            // animate(m_unit, { 'left': -560 * idx }, 1000, 'BounceEaseOut');
+            animate(m_uit, idx);
+            // 根据idx切换小圆点
+            circleChange(idx);
+        }
+        // 右按钮绑定点击事件
+        rightBtn.onclick = function () {
+            if (idx > 0) {// 已到最左
+                idx--;
+            } else {
+                idx = length - 1;
+            }
+            // 根据idx切换图片
+            // animate(m_unit, { 'left': -560 * idx }, 1000, 'BounceEaseOut');
+            animate(m_uit, { "left": -560 * idx });
+            // 根据idx切换小圆点
+            circleChange(idx);
+        }
+        // 根据idx切换小圆点
+        function circleChange(index) {
+            for (const index in circlelist) {
+                const element = circlelist[index];
+                element.className = "";
+            }
+            circlelist[index].className = "current";
+        }
+
+        // 根据idx切换图片动画
+        function animate(elem, targetJson, time) {
+            if (animate.arguments.length < 3) {
+                throw new Error('小老弟,参数类型不对或者参数太少了,请重新检查参数')
+                return;
+            }
+            var d = 560 * index;
+            console.log(d);
+            elem.style.left = -d + 'px';
+        }
+    </script>
+</body>
+
+</html>
