@@ -152,7 +152,7 @@
             }
             // 根据idx切换图片
             // animate(m_unit, { 'left': -560 * idx }, 1000, 'BounceEaseOut');
-            animate(m_uit, idx);
+            animate(m_unit, { "left": -560 * idx });
             // 根据idx切换小圆点
             circleChange(idx);
         }
@@ -165,7 +165,7 @@
             }
             // 根据idx切换图片
             // animate(m_unit, { 'left': -560 * idx }, 1000, 'BounceEaseOut');
-            animate(m_uit, { "left": -560 * idx });
+            animate(m_unit, { "left": -560 * idx });
             // 根据idx切换小圆点
             circleChange(idx);
         }
@@ -179,14 +179,16 @@
         }
 
         // 根据idx切换图片动画
-        function animate(elem, targetJson, time) {
-            if (animate.arguments.length < 3) {
-                throw new Error('小老弟,参数类型不对或者参数太少了,请重新检查参数')
-                return;
+        function animate(elem, targetJson) {
+            // 声明变化量json
+            var deltaJson = {};
+            for (const key in targetJson) {
+                // 根据targetJson中k取出元素的数值
+                deltaJson[key] = targetJson[key];
+                console.log(targetJson[key]);
+                console.log(key);
+                // elem.style.left = deltaJson[key] + "px";
             }
-            var d = 560 * index;
-            console.log(d);
-            elem.style.left = -d + 'px';
         }
     </script>
 </body>
