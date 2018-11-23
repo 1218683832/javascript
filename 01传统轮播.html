@@ -29,8 +29,7 @@
         }
 
         .m_unit {
-            background-color: aquamarine;
-            width: 3000px;
+            width: 4000px;
             height: 300px;
             position: absolute;
             left: 0;
@@ -82,15 +81,18 @@
             float: left;
             width: 10px;
             height: 10px;
-            opacity: 0.75;
-            background: gray;
             margin-right: 10px;
             border-radius: 50%;
         }
 
-        .circle>ul>li.current {
-            opacity: 1.0;
+        .circle>ul>li.selected {
+            opacity: 0.95;
             background: white;
+        }
+
+        .circle>ul>li.not_selected {
+            opacity: 0.65;
+            background: gray;
         }
     </style>
 </head>
@@ -115,16 +117,101 @@
         </div>
         <div class="circle" id='circle'>
             <ul>
-                <li class='current'></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li class='selected'></li>
+                <li class="not_selected"></li>
+                <li class="not_selected"></li>
+                <li class="not_selected"></li>
+                <li class="not_selected"></li>
             </ul>
         </div>
     </div>
     <script src="" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        $(document).ready(function () {
+            // 获取图片的长度
+            var imgLength = $('#m_unit>ul>li').length;
+            // 拼接假0
+            $('#m_unit>ul').append($('#m_unit>ul>li').eq(0).clone());
+            // 声明信号量idx
+            var idx = 0;
+            // 动画时长
+            var duration = 600;
+            // 是否正在执行动画
+            var isMove = false;
+            // 自动轮播
+            var timer = setInterval(rightBtnHandler, 2000);
+            // 鼠标进入box
+            $("#container").mouseenter(function () {
+                clearInterval(timer);
+                var isMove = false;
+            });
+            // 鼠标离开box
+            $('#container').mouseleave(function () {
+                timer = setInterval(rightBtnHandler, 2000);
+            });
+
+            // 左按钮
+            $("#leftBtn").click(function () {
+                console.log("you had clicked leftBtn!");
+                leftBtnHandler();
+                // 根据idx切换小圆点
+                circleChange(idx);
+            });
+            // 右按钮
+            $("#rightBtn").click(function () {
+                console.log("you had clicked leftBtn!");
+                rightBtnHandler();
+            });
+
+            function rightBtnHandler() {
+                if (isMove) {
+                    return;
+                }
+                isMove = true;
+                idx++;
+                console.log("current selected idx = " + idx);
+                $("#m_unit").animate({ left: -560 * idx }, duration, function () {
+                    if (idx > imgLength - 1) {
+                        idx = 0;
+                        $(this).css('left', '0px');
+                    }
+                    isMove = false;
+                });
+                // 根据idx切换小圆点
+                circleChange(idx);
+            }
+
+            function leftBtnHandler() {
+                if (isMove) {
+                    return;
+                }
+                isMove = true;
+                idx--;
+                if (idx < 0) {
+                    idx = imgLength - 1;
+                    $('#m_unit').css('left', -560 * imgLength);
+                }
+                console.log("current selected idx = " + idx);
+                $("#m_unit").animate({ left: -560 * idx }, duration, function () {
+                    if (idx > imgLength - 1) {
+                        idx = 0;
+                        $(this).css('left', '0px');
+                    }
+                    isMove = false;
+                });
+            }
+
+            function circleChange(index) {
+                var index = index;
+                if (index > imgLength - 1)
+                    index = 0;
+                // $("#circle>ul>li").eq(index).addClass("selected").siblings().addClass("li.not_selected");
+                $("#circle>ul>li").eq(index).css({ "background": "white", "opacity": "0.95" }).siblings().css({ "background": "gray", "opacity": "0.65" });
+            }
+        });
+    </script>
+    <!-- <script>
         // 获取移动单元
         var m_unit = document.getElementById('m_unit');
         // 获取左右按钮
@@ -187,10 +274,10 @@
                 deltaJson[key] = targetJson[key];
                 console.log(targetJson[key]);
                 console.log(key);
-                // elem.style.left = deltaJson[key] + "px";
+                elem.style.left = deltaJson[key] + "px";
             }
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
