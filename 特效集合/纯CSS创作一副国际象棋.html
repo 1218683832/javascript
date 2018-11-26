@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一副国际象棋</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    
+    <!-- 知识点：
+    一、height: 100vh; vh、vw单位的使用;
+    二、border: 0.2em solid tan; em单位的使用;
+    三、display: table; 
+        display: table-cell; display属性的使用;
+    四、ul:nth-child(-n+2); CSS3 :nth-child() 选择器的使用：
+        1、odd和even是可用于匹配下标是奇数或偶数的子元素的关键词；
+        2、使用公式 (an + b)。描述：表示周期的长度，n 是计数器（从 0 开始），b 是偏移值。 -->
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: darkslategray;
+        }
+
+        .chess {
+            background-color: burlywood;
+            font-size: 32px;
+            border: 0.2em solid tan;
+            box-shadow: 0 0.3em 2em 0.4em rgba(0, 0, 0, 0.3);
+        }
+
+        ul {
+            display: table;
+            margin: 0;
+        }
+
+        li {
+            display: table-cell;
+            width: 1.5em;
+            height: 1.5em;
+            text-align: center;
+            line-height: 1.5em;
+            font-weight: bold;
+        }
+
+        ul:nth-child(odd)>li:nth-child(even),
+        ul:nth-child(even)>li:nth-child(odd){
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        ul:nth-child(-n+2) {
+            color: black;
+        }
+
+        ul:nth-child(n+7) {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="chess">
+        <ul>
+            <li>&#9814;</li>
+            <li>&#9816;</li>
+            <li>&#9815;</li>
+            <li>&#9813;</li>
+            <li>&#9812;</li>
+            <li>&#9815;</li>
+            <li>&#9816;</li>
+            <li>&#9814;</li>
+        </ul>
+
+        <ul>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+        </ul>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <ul>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+            <li>&#9817;</li>
+        </ul>
+
+        <ul>
+            <li>&#9814;</li>
+            <li>&#9816;</li>
+            <li>&#9815;</li>
+            <li>&#9813;</li>
+            <li>&#9812;</li>
+            <li>&#9815;</li>
+            <li>&#9816;</li>
+            <li>&#9814;</li>
+        </ul>
+    </div>
+</body>
+
+</html>
