@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个雷达扫描动画</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19888.html -->
+
+    <!-- 知识点：
+    一、background: radial-gradient(circle at center, silver, black);
+        CSS radial-gradient()函数的使用, 用径向渐变创建图像;
+    二、background: linear-gradient(red 33%,yellow,blue); 
+        CSS linear-gradient()函数的使用, 创建一个线性渐变的图像;
+        33%表示颜色red被放置在渐变线33%的位置;
+    三、background: repeat-radial-gradient(); 
+        repeat-radial-gradient函数, 类似radial-gradient()，用重复的径向渐变创建图像;
+    四、background属性可以配置多个radial-gradient、linear-gradient等等图像; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, silver, black);
+        }
+
+        .radar {
+            width: calc(8em + 1.5em);
+            height: calc(8em + 1.5em);
+            font-size: 28px;
+            position: relative;
+            background: linear-gradient(90deg,
+                transparent 49.75%,
+                darkgreen 49.75%,
+                darkgreen 50.25%,
+                transparent 50.25%),
+                linear-gradient(transparent 49.75%,
+                darkgreen 49.75%,
+                darkgreen 50.25%,
+                transparent 50.25%),
+                /* repeating-radial-gradient(transparent 0, 
+			    transparent 14%, 
+			    darkgreen 14.5%, 
+		    	darkgreen 15%), */
+                repeating-radial-gradient(transparent 0,
+                transparent 0.95em,
+                darkgreen 0.96em,
+                darkgreen 1em),
+                linear-gradient(black, black);
+            border-radius: 50%;
+        }
+
+        .radar::before {
+            content: '';
+            position: absolute;
+            width: calc(8em / 2);
+            height: calc(8em / 2);
+            top:calc(1.5em / 2);
+            left: calc(1.5em / 2);
+            border-radius: 100% 0 0 0;
+            background: linear-gradient(45deg,
+                rgba(0, 0, 0, 0) 50%,
+                rgba(0, 192, 0, 1) 100%);
+            animation: scaning 5s linear 0s infinite;
+            transform-origin: 100% 100%; /* 改变元素旋转的中心点 */
+        }
+
+        @keyframes scaning{
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+
+    <div class="radar">
+    </div>
+</body>
+
+</html>
