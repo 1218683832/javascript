@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一支诱人的冰棍</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19763.html -->
+
+    <!-- 知识点：
+    一、overflow: hidden;
+        overflow属性的使用;
+    二、animation-play-state: paused;
+        animation属性中animation-play-state的使用;
+    三、.container:hover .flavors::before {
+            animation-play-state: running;
+        } 
+        :hover的使用; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: darkslategray;
+        }
+
+        .flavors {
+            width: 19em;
+            height: 26em;
+            display: flex;
+            font-size: 7px;
+            border-radius: 8em 8em 1em 1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flavors::before {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 120%;
+            background: linear-gradient(hotpink 0%,
+                hotpink 25%,
+                deepskyblue 25%,
+                deepskyblue 50%,
+                gold 50%,
+                gold 75%,
+                lightgreen 75%,
+                lightgreen 100%);
+            left: -20%;
+            z-index: -1;
+            transform: rotate(-25deg);
+            animation: moving 100s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .container:hover .flavors::before {
+            animation-play-state: running;
+        }
+
+        .flavors::after {
+            content: '';
+            width: 2em;
+            height: 17em;
+            position: absolute;
+            left: 13%;
+            bottom: 10%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 1em;
+        }
+
+        .stick {
+            content: '';
+            width: 6em;
+            height: 8em;
+            position: relative;
+            background-color: sandybrown;
+            border-radius: 0 0 3em 3em;
+            left: calc(50% - 6em / 2);
+        }
+
+        .stick::after {
+            content: '';
+            position: absolute;
+            width: inherit;
+            height: 2.5em;
+            background-color: sienna;
+        }
+
+
+        @keyframes moving {
+            to {
+                background-position: 0 1000vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="container">
+        <div class="flavors"></div>
+        <div class="stick"></div>
+    </div>
+</body>
+
+</html>
