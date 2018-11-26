@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个永动的牛顿摆</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://codepen.io/comehope/pen/qKmGaJ -->
+
+    <!-- 知识点：
+    一、justify-content: space-between; 
+        justify-content属性的使用, 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式;
+    二、.loader span:first-child {
+        }
+        :first-child选择器的使用;
+    三、alternate; --direction : 1 
+        alternate-reverse; --direction : -1
+        alternate和alternate-reverse的使用;
+    四、display: flex弹性布局配合justify-content属性对齐方式。 -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: beige;
+        }
+
+        .loader {
+            position: absolute;
+            display: flex;
+            font-size: 11px;
+            justify-content: space-between;
+            width: 12em;
+            border-color: black;
+            border-style: solid;
+            padding: 0 4em 2em 4em;
+            border-width: 0.4em 0.1em 4em 0.1em;
+        }
+
+        .loader span {
+            background-color: black;
+            position: relative;
+            width: 0.2em;
+            height: 10em;
+            transform-origin: top;
+        }
+
+        .loader span::before {
+            content: '';
+            position: absolute;
+            background-color: black;
+            border-radius: 50%;
+            left: -1.5em;
+            width: 3em;
+            height: 3em;
+            bottom: 0;
+        }
+
+        .loader span:first-child {
+            animation: moving 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) infinite alternate; --direction : 1;
+        }
+
+        .loader span:last-child {
+            animation: moving 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) infinite alternate-reverse; --direction : -1;
+        }
+
+        @keyframes moving{
+            0%{
+                transform: rotate(0deg);
+            }
+
+            50%{
+                transform: rotate(0deg);
+            }
+
+            100%{
+                transform: rotate(calc(45deg * var(--direction)));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
