@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一盘传统蚊香</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19760.html -->
+
+    <!-- 知识点：
+    一、align-self: flex-end;
+        align-self属性的使用;
+    二、box-shadow: 0 0 1em white;
+        box-shadow属性的使用; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, midnightblue, black);
+        }
+
+        .coil {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .coil span {
+            position: absolute;
+            width: calc((var(--n) * 2 - 1) * 1em);
+            height: calc((var(--n) - 0.5) * 1em);
+            border: 1em solid darkgreen;
+        }
+
+        .coil span:nth-child(1) {
+            --n: 1;
+        }
+
+        .coil span:nth-child(2) {
+            --n: 2;
+        }
+
+        .coil span:nth-child(3) {
+            --n: 3;
+        }
+
+        .coil span:nth-child(4) {
+            --n: 4;
+        }
+
+        .coil span:nth-child(5) {
+            --n: 5;
+        }
+
+        .coil span:nth-child(6) {
+            --n: 6;
+        }
+
+        .coil span:nth-child(7) {
+            --n: 7;
+        }
+
+        .coil span:nth-child(8) {
+            --n: 8;
+        }
+
+        .coil span:nth-child(odd) {
+            align-self: flex-end;
+            border-bottom: none;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+
+        .coil span:nth-child(even) {
+            border-top: none;
+            transform: translateX(-1em);
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        }
+
+        .coil::before {
+            content: '';
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            background-color: darkgreen;
+            border-radius: 50%;
+            left: -1.5em;
+            top: -0.5em;
+        }
+
+        .coil::after {
+            content: '';
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            top: -0.5em;
+            background-color: darkred;
+            left: -9.5em;
+            z-index: -1;
+            transform: scale(0.9);
+            box-shadow: 0 0 1em white;
+            animation: blink 1s linear infinite alternate;
+        }
+
+        @keyframes blink {
+            to {
+                box-shadow: 0 0 0 white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="coil">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
