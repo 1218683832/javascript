@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个在容器中反弹的小球</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .loader {
+            width: 10em;
+            height: 3em;
+            font-size: 20px;
+            border: 0.3em solid silver;
+            border-radius: 3em;
+            position: relative;
+            border-left-color: hotpink;
+            border-right-color: dodgerblue;
+            animation: spin 3s linear infinite;
+        }
+
+        .loader::after {
+            content: '';
+            width: 3em;
+            height: 3em;
+            position: absolute;
+            background-color: hotpink;
+            border-radius: 50%;
+            top: 0;
+            left: 0em;
+            animation: shift 3s linear infinite;
+        }
+
+        @keyframes spin {
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shift{
+            50%{
+                left: 7em;
+                background-color: dodgerblue;
+            }
+
+            to{
+                left: 0em;
+                background-color: hotpink;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="loader"></div>
+</body>
+
+</html>
