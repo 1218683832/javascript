@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个蝴蝶标本展示框</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19758.html -->
+
+    <!-- 知识点：
+    一、box-sizing: border-box;
+        box-sizing 属性允许你以某种方式定义某些元素，以适应指定区域。
+        例如，假如您需要并排放置两个带边框的框，可通过将 box-sizing 设置为 "border-box"。
+        这可令浏览器呈现出带有指定宽度和高度的框，并把边框和内边距放入框中;
+    二、border: 0.2em inset silver;
+        border-right: 0.3em solid orangered;
+        border属性、border-right属性当你需要线条的时候灵巧使用;
+    三、transform: rotate(90deg) translate(3.5em, -5em); -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(gray, lightyellow, gray);
+        }
+
+        .butterfly {
+            width: 10em;
+            height: 10em;
+            position: relative;
+            background-color: #fff;
+            font-size: 8px;
+            /* transform: translateX(1em); */
+        }
+
+        .butterfly::before {
+            content: 's';
+            position: absolute;
+            box-sizing: border-box;
+            width: 24em;
+            height: 18em;
+            top: 0;
+            left: 0;
+            top: calc(50% - 18em / 2);
+            left: calc(50% - 24em / 2);
+            background-color: black;
+            z-index: 0;
+            border: 0.2em inset silver;
+        }
+
+        .butterfly::after {
+            content: '';
+            position: absolute;
+            box-sizing: border-box;
+            width: 40em;
+            height: 30em;
+            top: calc(50% - 30em / 2);
+            left: calc(50% - 40em / 2);
+            z-index: -1;
+            background-color: lightyellow;
+            border: 0.2em inset silver;
+            border-radius: 2%;
+        }
+
+        .butterfly>.left>span,
+        .butterfly>.right>span {
+            position: absolute;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .left>span:nth-child(1) {
+
+            width: 5em;
+            height: 7em;
+            background-color: gold;
+        }
+
+        .left>span:nth-child(2) {
+            width: 5.5em;
+            height: 3.5em;
+            top: 5em;
+            left: -2.5em;
+            filter: opacity(0.5);
+            background-color: orangered;
+        }
+
+        .left>span:nth-child(3) {
+            width: 6em;
+            height: 6em;
+            border-right: 0.3em solid orangered;
+            top: -0.5em;
+        }
+
+        .right>span{
+            transform: rotate(90deg) translate(3.5em, -5em);
+        }
+        
+        .right>span:nth-child(1) {
+            width: 5em;
+            height: 7em;
+            background-color: gold;
+        }
+
+        .right>span:nth-child(2) {
+            width: 5.5em;
+            height: 3.5em;
+            top: 5em;
+            left: -2.5em;
+            filter: opacity(0.5);
+            background-color: orangered;
+        }
+
+        .right>span:nth-child(3) {
+            width: 6em;
+            height: 6em;
+            border-left: 0.3em solid orangered;
+            /* top: -0.5em; */
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="butterfly">
+        <div class="left">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="right">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</body>
+
+</html>
