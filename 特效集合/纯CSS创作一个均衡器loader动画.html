@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个均衡器loader动画</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19619.html -->
+
+    <!-- 知识点：
+    一、clip-path: inset(80% 0 0 0);
+        CSS中的路径裁剪样式clip-path;
+        https://www.cnblogs.com/xiaohuochai/p/7509225.html
+    二、justify-content: space-between;
+        弹性盒子中元素均匀分布; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .equalizer {
+            width: 15em;
+            height: 12em;
+            font-size: 10px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .equalizer>span {
+            width: 1.5em;
+            height: 12em;
+            background: linear-gradient(red, yellow, green);
+            animation: up-and-down 3s linear infinite;
+            animation-delay: calc(-1 * 0.4s * var(--n));
+        }
+
+        .equalizer span:nth-child(1) {
+            --n: 1;
+        }
+
+        .equalizer span:nth-child(2) {
+            --n: 2;
+        }
+
+        .equalizer span:nth-child(3) {
+            --n: 3;
+        }
+
+        .equalizer span:nth-child(4) {
+            --n: 4;
+        }
+
+        .equalizer span:nth-child(5) {
+            --n: 5;
+        }
+
+        .equalizer span:nth-child(6) {
+            --n: 6;
+        }
+
+        @keyframes up-and-down {
+
+            0%,
+            100% {
+                clip-path: inset(27% 0 0 0);
+            }
+
+            10% {
+                clip-path: inset(17% 0 0 0);
+            }
+
+            20% {
+                clip-path: inset(55% 0 0 0);
+            }
+
+            30% {
+                clip-path: inset(30% 0 0 0);
+            }
+
+            40% {
+                clip-path: inset(13% 0 0 0);
+            }
+
+            50% {
+                clip-path: inset(38% 0 0 0);
+            }
+
+            60% {
+                clip-path: inset(80% 0 0 0);
+            }
+
+            70% {
+                clip-path: inset(21% 0 0 0);
+            }
+
+            80% {
+                clip-path: inset(0% 0 0 0);
+            }
+
+            90% {
+                clip-path: inset(36% 0 0 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="equalizer">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
