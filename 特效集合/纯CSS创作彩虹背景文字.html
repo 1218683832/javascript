@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作彩虹背景文字</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://codepen.io/comehope/pen/qKmGaJ -->
+
+    <!-- 知识点：
+    一、background-image; 
+        background-image属性设置一个元素的背景图像;
+    二、background-position: -2000vw;
+        background-position属性设置背景图像的起始位置;
+    三、height: 100vh; font-size: 20vw;
+        vh: viewpoint height，视窗高度，1vh=视窗高度的1%;
+        vw: viewpoint width，视窗宽度，1vw=视窗宽度的1%;
+    四、background-clip: text;
+        background-clip属性指定背景绘制区域;
+    注意，制作流光文字有几个要点：text-fill-color一般设置为transparent（透明色），
+    然后利用background-image和渐变颜色来设置文字的背景色，利用background-clip来实现文字的截取，
+    再利用background-size设置扩大背景，使运用animation的时候能达到动画的效果等。 -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+        }
+
+        p {
+            font-size: 20vw;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: white;
+            background-image: linear-gradient(to right,
+                orangered,
+                orange,
+                gold,
+                lightgreen,
+                cyan,
+                dodgerblue,
+                mediumpurple,
+                hotpink,
+                orangered);
+            animation: sliding 30s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes sliding {
+            to {
+                background-position: -2000vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <p>thanks</p>
+</body>
+
+</html>
