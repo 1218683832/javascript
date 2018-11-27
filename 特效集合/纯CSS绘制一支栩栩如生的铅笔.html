@@ -9,10 +9,29 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>纯CSS绘制一支栩栩如生的铅笔</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19616.html -->
+
+    <!-- 知识点：
+        一、filter: drop-shadow(5px 10px 3px gray);  
+            CSS3 filter(滤镜) 属性定义了元素(通常是<img>)的可视效果(例如：模糊与饱和度);
+        二、border-style: solid;
+            border-width: calc(var(--h)/2) var(--h);
+            border-color: transparent burlywood transparent transparent;  
+            利用boder边框设置不规则图形;
+        三、line-height: 2em; 文字行高;
+            text-align: center; 设置文字居中;
+            text-transform: uppercase;  字母转大写;
+            color: silver;  设置文字颜色;
+            font-family: sans-serif;    设置文字字体;
+            letter-spacing: 1.5px;  设置文字之间间距;
+        四、--n: 1; CSS定义变量;
+        五、var(--n); CSS使用变量var()函数;
+        六、calc((var(--n) - 10) * 0.2s);  CSS函数; -->
 
     <style>
         * {
@@ -20,7 +39,7 @@
             padding: 0;
         }
 
-        body{
+        body {
             width: 100vw;
             height: 100vh;
             display: flex;
@@ -29,21 +48,75 @@
             background-color: lightskyblue;
         }
 
+        :root {
+            --h: 5em;
+        }
+
         .pencil {
-            width: 40em;
-            height: 5em;
+            width: 60em;
+            height: var(--h);
             font-size: 15px;
-            background-color: red;
             position: relative;
+            filter: drop-shadow(3px 12px 3px gray);
         }
 
         .taper {
             box-sizing: border-box;
-            width: 3em;
-            height: 3em;
             position: absolute;
-            background-color: #fff;
-            clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+            border-style: solid;
+            border-width: calc(var(--h)/2) var(--h);
+            border-color: transparent burlywood transparent transparent;
+            /* clip-path: polygon(100% 0%, 0% 50%, 100% 100%); */
+        }
+
+        .taper::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            top: -2.5em;
+            left: -5em;
+            border-width: calc(var(--h)/2) var(--h);
+            border-color: transparent black transparent transparent;
+            transform: scale(0.4);
+        }
+
+        .barrel {
+            position: absolute;
+            width: 42em;
+            height: 2em;
+            background-color: green;
+            left: calc(var(--h) * 2);
+            border-top: 1.5em solid forestgreen;
+            border-bottom: 1.5em solid darkgreen;
+            line-height: 2em;
+            text-align: center;
+            text-transform: uppercase;
+            color: silver;
+            font-family: sans-serif;
+            letter-spacing: 1.5px;
+        }
+
+        .eraser {
+            position: absolute;
+            width: 7em;
+            height: 2em;
+            background-color: lightpink;
+            border-top: 1.5em solid pink;
+            border-bottom: 1.5em solid lightcoral;
+            border-top-right-radius: 0.5em;
+            border-bottom-right-radius: 0.5em;
+            right: 1em;
+        }
+
+        .eraser::after{
+            content: '';
+            width: 2em;
+            height: 2em;
+            position: absolute;
+            top: -1.5em;
+            background-color: silver;
+            border-top: 1.5em solid lightgray;
+	        border-bottom: 1.5em solid gray;
         }
     </style>
 </head>
