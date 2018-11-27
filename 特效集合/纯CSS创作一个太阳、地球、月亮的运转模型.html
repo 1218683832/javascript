@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个太阳、地球、月亮的运转模型</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/20050.html -->
+
+    <!-- 知识点：
+    一、calc() 函数用于动态计算长度值, 任何长度值都可以使用calc()函数进行计算; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+        }
+
+        .container {
+            font-size: 10px;
+            width: 40em;
+            height: 40em;
+            position: relative;
+            background-color: red;
+        }
+
+        .sun {
+            width: 10em;
+            height: 10em;
+            position: relative;
+            background-color: yellow;
+            border-radius: 50%;
+            top: calc(50% - 10em / 2);
+            left: calc(50% - 10em / 2);
+            box-shadow: 0em 0em 3em white;
+            animation: flash 2s linear infinite;   
+        }
+
+        .earth,
+        .moon {
+            border-radius: 50%;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.1em;
+        }
+
+        .earth {
+            width: 30em;
+            height: 30em;
+            position: relative;
+            top: calc(50% - 30em / 2 - 10em);
+            left: calc(50% - 30em / 2);
+            /* animation: orbit 36.5s linear infinite;    */
+        }
+
+        .moon {
+            width: 10em;
+            height: 10em;
+            position: absolute;
+            top: calc(50% - 10em / 2);
+            left: calc(-10em / 2);
+            animation: orbit 2.7s linear infinite;
+        }
+
+        .earth::after {
+            content: '';
+            width: 4em;
+            height: 4em;
+            position: absolute;
+            background-color: blue;
+            border-radius: 50%;
+            top: calc(50% - 4em / 2);
+            left: calc(-4em / 2);
+        }
+
+        .moon::after {
+            content: '';
+            width: 2em;
+            height: 2em;
+            position: absolute;
+            background-color: silver;
+            border-radius: 50%;
+            top: calc(50% - 2em / 2);
+            left: calc(-2em / 2);
+            /* animation: orbit 2.7s linear infinite; */
+        }
+
+        @keyframes orbit{
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes flash {
+            50%{
+                box-shadow: 0em 0em 0em white;
+            }
+            to{
+                box-shadow: 0em 0em 3em white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="container">
+        <div class="sun"></div>
+        <div class="earth">
+            <div class="moon"></div>
+        </div>
+    </div>
+</body>
+
+</html>
