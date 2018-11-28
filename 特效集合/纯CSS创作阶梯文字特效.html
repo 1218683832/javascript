@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作阶梯文字特效</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19607.html -->
+
+    <!-- 知识点：
+        一、transform: skewY(-30deg) skewX(45deg) scaleY(1.3333);  
+            skewX(45deg)定义沿着X轴的2D倾斜转换;
+            skewY(-30deg)定义沿着Y轴的2D倾斜转换;
+            scaleY(1.3333)通过设置Y轴的值来定义缩放转换;
+        二、transform: translateY(-100%);  
+            定义转换，只是用Y轴的值;
+        三、lease-in-out属性;
+            动画以低速开始和结束; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .container {
+            font-size: 60px;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .container>p {
+            height: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container>p:nth-child(odd) {
+            transform: skewY(-30deg) skewX(45deg) scaleY(1.3333);
+        }
+
+        .container p:nth-child(even) {
+            transform: skewY(-30deg) scaleY(1.3333);
+            margin-left: 1.3em;
+        }
+
+        .container p:nth-child(3) {
+            margin-left: 2.6em;
+        }
+
+        .container p span {
+            display: block;
+            text-align: center;
+            line-height: 1em;
+            animation: lettering 3s infinite ease-in-out alternate;
+        }
+
+        @keyframes lettering {
+            to {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="container">
+        <p>
+            <span>stay</span>
+            <span>hungry</span>
+        </p>
+        <p>
+            <span>hungry</span>
+            <span>stay</span>
+        </p>
+        <p>
+            <span>stay</span>
+            <span>foolish</span>
+        </p>
+    </div>
+</body>
+
+</html>
