@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个表达怀念童年心情的条纹彩虹心特效</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bc: blue;
+            --h: 15em;
+            --t: null;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, navy, black);
+        }
+
+        .heart {
+            font-size: 10px;
+            width: 30em;
+            height: 24em;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .heart>span {
+            width: 2em;
+            height: var(--h);
+            top: var(--t);
+            position: relative;
+            background-color: var(--bc);
+            border-radius: 2em;
+            animation: beating 5s linear infinite;
+            animation-delay: 500ms;
+        }
+
+        .heart>span:nth-child(1),
+        .heart>span:nth-child(9) {
+            --bc: orangered;
+            --h: 6em;
+            --t: 6em;
+        }
+
+        .heart>span:nth-child(2),
+        .heart>span:nth-child(8) {
+            --bc: gold;
+            --h: 11em;
+            --t: 4em;
+        }
+
+        .heart>span:nth-child(3),
+        .heart>span:nth-child(7) {
+            --bc: limegreen;
+            --h: 16em;
+            --t: 2em;
+        }
+
+        .heart>span:nth-child(4),
+        .heart>span:nth-child(6) {
+            --bc: dodgerblue;
+            --h: 17em;
+            --t: 4em;
+        }
+
+        .heart>span:nth-child(5) {
+            --bc: mediumpurple;
+            --h: 18em;
+            --t: 6em;
+        }
+
+        @keyframes beating {
+
+            50%,
+            60% {
+                top: 15%;
+                height: 50%;
+                filter: blur(1em);
+                width: 1em;
+                background-color: lightblue;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <dib class="heart">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </dib>
+</body>
+
+</html>
