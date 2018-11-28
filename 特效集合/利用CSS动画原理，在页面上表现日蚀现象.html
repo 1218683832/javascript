@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>利用CSS动画原理，在页面上表现日蚀现象</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            animation: 10s linear infinite;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sky {
+            width: 100vw;
+            height: 100vh;
+            background-color: skyblue;
+            font-size: 12px;
+            position: relative;
+            animation-name: animate-sky;
+        }
+
+        .sun,
+        .moon {
+            width: 20em;
+            height: 20em;
+            position: absolute;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .sun {
+            background-color: gold;
+            top: calc(50% - 20em / 2);
+            left: calc(50% - 20em / 2);
+            animation-name: animate-sun;
+        }
+
+        .moon {
+            background-color: slategray;
+            top: calc(50% - 20em / 2);
+            left: calc(50% / 3);
+            animation-name: animate-moon;
+        }
+
+        @keyframes animate-sky {
+            50% {
+                background-color: black;
+            }
+        }
+
+        @keyframes animate-sun{
+            50%{
+                box-shadow: 0 0 5em 1em white;
+            }
+        }
+
+        @keyframes animate-moon{
+            50%{
+                background-color: black;
+            }
+
+            to{
+                left: 75%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="sky">
+        <div class="sun"></div>
+        <div class="moon"></div>
+    </div>
+</body>
+
+</html>
