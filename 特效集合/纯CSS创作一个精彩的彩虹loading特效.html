@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个精彩的彩虹loading特效</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .rainbowloader {
+            font-size: 20px;
+            width: 18em;
+            height: 18em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rainbowloader>span {
+            box-sizing: border-box;
+            width: calc(100% - 0.8em * var(--n));
+            height: calc(100% - 0.8em * var(--n));
+            top: calc(50% - calc(100% - 0.8em * var(--n))/2);
+            left: calc(50% - calc(100% - 0.8em * var(--n))/2);
+            position: absolute;
+            border-radius: 50%;
+            border: 0.8em solid var(--c);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+            animation: rotating 3s infinite;
+            animation-delay: calc(0.05s * var(--n) / 2);
+        }
+
+        .rainbowloader>span:nth-child(1) {
+            --n: 0;
+            --c: orangered;
+        }
+
+        .rainbowloader>span:nth-child(2) {
+            --n: 2;
+            --c: orange;
+        }
+
+        .rainbowloader>span:nth-child(3) {
+            --n: 4;
+            --c: yellow;
+        }
+
+        .rainbowloader>span:nth-child(4) {
+            --n: 6;
+            --c: mediumspringgreen;
+        }
+
+        .rainbowloader>span:nth-child(5) {
+            --n: 8;
+            --c: deepskyblue;
+        }
+
+        .rainbowloader>span:nth-child(6) {
+            --n: 10;
+            --c: mediumpurple;
+        }
+
+        .rainbowloader>span:nth-child(7) {
+            --n: 12;
+            --c: purple;
+        }
+
+        @keyframes rotating {
+
+            0%,
+            20% {
+                transform:rotate(0deg);
+            }
+
+            80%,
+            100% {
+                transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="rainbowloader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
