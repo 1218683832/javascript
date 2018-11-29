@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作六边形按钮特效</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(white, silver);
+        }
+
+        nav>ul {
+            font-size: 20px;
+            list-style-type: none;
+            margin: 3em;
+            color: white;
+            text-align: center;
+        }
+
+        nav>ul>li {
+            margin: 4em;
+            width: 4.5em;
+            height: 2em;
+            line-height: 2em;
+            background-color: black;
+            position: relative;
+        }
+
+        nav:nth-child(3)>ul>li::before,
+        nav:nth-child(3)>ul>li::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            position: absolute;
+            background-color: black;
+            transition: 0.3s;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        nav:nth-child(3)>ul>li::before {
+            left: 0;
+            transform: rotate(45deg) translateX(calc(2em * -2.5));
+        }
+
+        nav:nth-child(3)>ul>li::after {
+            right: 0;
+            transform: rotate(-45deg) translateX(calc(2em * 2.5));
+            transition-delay: 0.1s;
+        }
+
+        nav:nth-child(3)>ul>li:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translateX(0);
+        }
+
+        nav:nth-child(3)>ul>li:hover::after {
+            opacity: 1;
+            transform: rotate(-45deg) translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <nav>
+        <ul class="ul1">
+            <li>Home</li>
+            <li>Products</li>
+            <li>Services</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+    <nav>
+        <ul class="ul2">
+            <li>Home</li>
+            <li>Products</li>
+            <li>Services</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+    <nav>
+        <ul class="ul3">
+            <li>Home</li>
+            <li>Products</li>
+            <li>Services</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+</body>
+
+</html>
