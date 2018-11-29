@@ -2,20 +2,116 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>纯CSS绘制一个世界上不存在的彭罗斯三角形</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS绘制一个世界上不存在的彭罗斯三角形</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19473.html -->
+
+    <!-- 知识点：
+    一、clip-path: polygon(57% 0, 75% 0, 26% 85%, 89.5% 85%, 98.4% 100%, 0 100%);
+        css 属性clip-path之多边形polygon小窥;https://www.cnblogs.com/leegao/p/4384499.html
+    二、filter: brightness(0.66);
+        滤镜, 给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。
+        其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1; -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .penrose {
+            width: 20em;
+            height: 20em;
+            position: relative;
+            animation: rotating 30s linear infinite;
+            transform-origin: 66% 66%;
+        }
+
+        .penrose>span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .penrose span:nth-child(1) {
+            transform: rotate(0deg);
+        }
+
+        .penrose span:nth-child(2) {
+            transform: rotate(120deg);
+        }
+
+        .penrose span:nth-child(3) {
+            transform: rotate(240deg);
+        }
+
+        .penrose {
+            color: red;
+        }
+
+        .penrose span {
+            background-color: currentColor;
+            clip-path: polygon(57% 0, 75% 0, 26% 85%, 89.5% 85%, 98.4% 100%, 0 100%);
+        }
+
+        .penrose span:nth-child(1) {
+            filter: brightness(1);
+        }
+
+        .penrose span:nth-child(2) {
+            top: 18.3%;
+            left: 43.3%;
+            filter: brightness(0.66);
+        }
+
+        .penrose span:nth-child(3) {
+            top: 46.5%;
+            left: 5.9%;
+            filter: brightness(0.33);
+        }
+
+        @keyframes rotating {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+
+    <script src="" async defer></script>
+    <div class="penrose">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
 </html>
