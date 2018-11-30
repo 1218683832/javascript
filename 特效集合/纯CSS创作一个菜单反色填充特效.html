@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个菜单反色填充特效</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/19753.html -->
+
+    <!-- 知识点：
+    一、mix-blend-mode: difference;
+        1.mix-blend-mode混合模式的元素可以和该元素下方的元素实现混合效果
+        2.mix-blend-mode混合模式的元素只能和正下方的第一层元素实现混合效果(此处第一层指的是下方的层叠区域)
+        3.如果想实现下方多层混合，下方的元素也需要使用mix-blend-mode混合模式.
+        4.使用mix-blend-mode混合模式的元素不能和html,body标签的背景图或者背景色产生混合效果;  -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right bottom, gold, chocolate);
+        }
+
+        nav {
+            font-size: 46px;
+        }
+
+        ul {
+            list-style-type: none;
+            mix-blend-mode: difference;
+        }
+
+        li {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 1em;
+            color: black;
+            width: 4em;
+            height: 1.5em;
+            line-height: 1.5em;
+            text-align: left;
+            background-color: white;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li span {
+            color: white;
+            mix-blend-mode: difference;
+        }
+
+        li::before {
+            content: '';
+            width: 1.5em;
+            position: absolute;
+            height: inherit;
+            background-color: black;
+            border-radius: 50%;
+            left: -0.75em;
+            transition: 0.5s ease-out;
+        }
+
+        li:hover::before {
+            transform: scale(7);
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <nav>
+        <ul>
+            <li><span>Home</span></li>
+            <li><span>Products</span></li>
+            <li><span>Services</span></li>
+            <li><span>Contact</span></li>
+        </ul>
+    </nav>
+</body>
+
+</html>
