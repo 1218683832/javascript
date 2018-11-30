@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个跳8字型舞的loader</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: goldenrod;
+        }
+
+        .loader {
+            font-size: 10px;
+            width: 28em;
+            height: 10em;
+            position: relative;
+        }
+
+        .loader>span {
+            width: calc(10em / 5);
+            height: calc(10em / 5);
+            position: absolute;
+            top: calc(50% - calc(10em / 5) / 2);
+            border-radius: 50%;
+            background-color: black;
+            animation: dance 1.5s linear infinite;
+            transform-origin: calc(28em / 2) top;
+            /* animation: loading 1.5s linear infinite; */
+            animation-delay: calc((var(--n) - 5) * 0.1s);
+        }
+
+        .loader span:nth-child(1) {
+            --n: 1;
+        }
+
+        .loader span:nth-child(2) {
+            --n: 2;
+        }
+
+        .loader span:nth-child(3) {
+            --n: 3;
+        }
+
+        .loader span:nth-child(4) {
+            --n: 4;
+        }
+
+        .loader span:nth-child(5) {
+            --n: 5;
+        }
+
+        @keyframes dance {
+            to {
+                transform: rotateX(360deg) rotateZ(360deg);
+            }
+        }
+
+
+        @keyframes loading {
+            12.5% {
+                top: 0;
+                transform: translateX(calc(28em / 4 * 1 - calc(10em / 5))) rotateX(calc(90deg * 1));
+            }
+
+            25% {
+                top: calc(50%);
+                transform: translateX(calc(28em / 4 * 2 - calc(10em / 5))) rotateX(calc(90deg * 2));
+            }
+
+            37.5% {
+                top: calc(100%);
+                transform: translateX(calc(28em / 4 * 3 - calc(10em / 5))) rotateX(calc(90deg * 3));
+            }
+
+            50% {
+                top: calc(50%);
+                transform: translateX(calc(28em / 4 * 4 - calc(10em / 5))) rotateX(calc(90deg * 4));
+            }
+
+            62.50% {
+                top: 0;
+                transform: translateX(calc(28em / 4 * 3 - calc(10em / 5))) rotateX(calc(90deg * 3));
+            }
+
+            75% {
+                top: calc(50%);
+                transform: translateX(calc(28em / 4 * 2 - calc(10em / 5))) rotateX(calc(90deg * 2));
+            }
+
+            87.5% {
+                top: calc(100%);
+                transform: translateX(calc(28em / 4 * 1 - calc(10em / 5))) rotateX(calc(90deg * 1));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
