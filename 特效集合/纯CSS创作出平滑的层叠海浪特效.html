@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作出平滑的层叠海浪特效</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(antiquewhite, navajowhite);
+        }
+
+        .sea {
+            font-size: 16px;
+            width: 20em;
+            height: 20em;
+            position: relative;
+            background-color: whitesmoke;
+            background-image: linear-gradient(darkblue,
+                rgba(255, 255, 255, 0) 80%,
+                rgba(255, 255, 255, 0.5));
+            overflow: hidden;
+        }
+
+        .sea>p{
+            color:white;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            width: 100%;
+            line-height: 20em;
+            text-align: center;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .sea>span {
+            width: 150%;
+            height: 150%;
+            top: calc(-64%);
+            left: calc(-25%);
+            position: absolute;
+            border-radius: 42%;
+            filter: opacity(0.4);
+            transform-origin: 50% 48%;
+            animation: drift linear infinite;
+        }
+
+        .sea>span:nth-of-type(1) {
+            background-color: deepskyblue;
+            animation-duration: 6s;
+        }
+
+        .sea>span:nth-of-type(2) {
+            background-color: deepskyblue;
+            animation-duration: 8s;
+        }
+
+        .sea>span:nth-of-type(3) {
+            background-color: orangered;
+            animation-duration: 10s;
+            opacity: 0.1;
+        }
+
+        @keyframes drift {
+            from{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="sea">
+        <p class="title">the sea</p>
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <span class="wave"></span>
+    </div>
+</body>
+
+</html>
