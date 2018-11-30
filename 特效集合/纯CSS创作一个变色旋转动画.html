@@ -1,0 +1,129 @@
+<<!DOCTYPE html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <html class="no-js">
+    <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>纯CSS创作一个变色旋转动画</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+    <!-- 参考：https://www.jqhtml.com/20152.html -->
+
+    <!-- 知识点：
+    一、filter: hue-rotate(1turn);
+        给图像应用色相旋转。"angle"一值设定图像会被调整的色环角度值。值为0deg，则图像无变化。
+        若值未设置，默认值是0deg。该值虽然没有最大值，超过360deg的值相当于又绕一圈;
+    二、1turn;
+        CSS3角度单位turn(圈); -->
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: black;
+            }
+
+            .container {
+                font-size: 12px;
+                color: lime;
+                display: flex;
+                background-color: #fff;
+                align-items: center;
+                justify-content: center;
+                animation: change-color 5s linear infinite;
+            }
+
+            .container>span {
+                position: absolute;
+                --diameter: calc(5em + (var(--n) - 1) * 3em);
+                width: var(--diameter);
+                height: var(--diameter);
+                border-style: solid;
+                border-width: 1em 1em 0 0;
+                border-radius: 50%;
+                border-color: currentColor transparent;
+                animation: rotating linear infinite;
+                animation-duration: calc(5s / (9 - var(--n) + 1));
+            }
+
+            .container>span:nth-child(1) {
+                --n: 1;
+            }
+
+            .container>span:nth-child(2) {
+                --n: 2;
+            }
+
+            .container>span:nth-child(3) {
+                --n: 3;
+            }
+
+            .container>span:nth-child(4) {
+                --n: 4;
+            }
+
+            .container>span:nth-child(5) {
+                --n: 5;
+            }
+
+            .container>span:nth-child(6) {
+                --n: 6;
+            }
+
+            .container>span:nth-child(7) {
+                --n: 7;
+            }
+
+            .container>span:nth-child(8) {
+                --n: 8;
+            }
+
+            @keyframes change-color {
+                to {
+                    filter: hue-rotate(1turn);
+                }
+            }
+
+            @keyframes rotating {
+                to {
+                    transform: rotate(1turn);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <script src="" async defer></script>
+        <div class="container">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </body>
+
+    </html>
