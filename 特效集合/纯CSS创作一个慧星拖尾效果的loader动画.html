@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>纯CSS创作一个慧星拖尾效果的loader动画</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .loader {
+            font-size: 16px;
+            width: 20em;
+            height: 20em;
+            position: relative;
+        }
+
+        .loader>.face{
+            animation: loading 2s linear infinite;
+        }
+
+        .loader>.face:nth-child(1) {
+            width: 20em;
+            height: 20em;
+            position: absolute;
+            color: gold;
+            border-width: 0.2em 0.2em 0 0;
+            border-radius: 50%;
+            border-style: solid;
+            border-color: currentColor;
+            border-right-color: transparent;
+        }
+
+        .loader>.face:nth-child(2) {
+            width: 15em;
+            height: 15em;
+            position: absolute;
+            top: 2.5em;
+            left: 2.5em;
+            color: lime;
+            border-width: 0.2em 0 0 0.2em;
+            border-radius: 50%;
+            border-style: solid;
+            border-color: currentColor;
+            border-left-color: transparent;
+            animation-direction: reverse;
+        }
+
+
+        .loader>.face:nth-child(1)::before,
+        .loader>.face:nth-child(2)::before {
+            content: '';
+            width: 0.8em;
+            height: 0.8em;
+            position: absolute;
+            border-radius: 50%;
+            background-color: currentColor;
+            box-shadow: 0 0 2em,
+                0 0 4em,
+                0 0 6em,
+                0 0 8em,
+                0 0 10em,
+                0 0 0 0.5em rgba(255, 255, 0, 0.1);
+        }
+
+        .loader>.face:nth-child(1)::before {
+            top: 2.35em;
+            left: 16.5em;
+        }
+
+        .loader>.face:nth-child(2)::before {
+            top: 1.9em;
+            left: 1.5em;
+        }
+
+        @keyframes loading{
+            to{
+                transform: rotate(1turn);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+    <div class="loader">
+        <div class="face"></div>
+        <div class="face"></div>
+    </div>
+</body>
+
+</html>
