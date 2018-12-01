@@ -28,6 +28,61 @@
             justify-content: center;
             background-color: darkcyan;
         }
+
+        div{
+            font-size: 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: sans-serif;
+            color: gold;
+            text-align: center;
+            position: relative;
+        }
+
+        p {
+            width: 20em;
+            height: 3em;
+            border-radius: 0.5em;
+            position: relative;
+            
+            margin: 2em;
+            border-color: gold;
+            border-style: solid;
+            border-width: 0.1em;
+            overflow: hidden;
+        }
+
+        p>span {
+            width: 20em;
+            height: 3em;
+            text-align: center;
+            line-height: 3em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-color: transparent;
+            transition: 1s ease-out;
+        }
+
+        .question {
+            color: gold;
+        }
+
+        p:hover>.question {
+            left: 100%;
+        }
+
+        .answer {
+            color: whitesmoke;
+            left: -100%;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+         p:hover>.answer {
+            left: 0%;
+        }
     </style>
 </head>
 
