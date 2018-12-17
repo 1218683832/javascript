@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman';
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #faf8ef;
+    font-size: 20px;
+    overflow:auto;
+    overflow-x: hidden;
+    overflow-y: hidden；
+}
+
+:root{
+    /* 主界面宽 */
+    --w: 46em;
+    /* 2048游戏界面容器宽 */
+    --w2: 56%;
+    /* 每个小格子宽高比例 */
+    --cw: 0.21;
+    --ch: 0.21;
+}
+
+/* 2048界面容器 */
+#container {
+    width: var(--w);
+    height: var(--w);
+    position: relative;
+    background-image: url(body_bg.jpg);
+}
+
+#container>h1{
+    font-size: 3.5em;
+    position: relative;
+    left: calc((100% - var(--w2)) / 2);
+}
+
+#container>h1,.game-container,#game-bottom{
+    margin-top: 0.3em;
+    left: calc((100% - var(--w2)) / 2);
+}
+
+#game-bottom{
+    width: var(--w2);
+    margin-top: 2em;
+    position: relative;
+    /* background: #bbada0; */
+}
+
+#game-bottom>#btn-new-game{
+    position: relative;
+    border-radius: 0.2em;
+    padding: 0.2em;
+    background-color: #bbada0;
+    box-shadow: 0 2px 15px 3px #bbada0;
+}
+
+/* 2048游戏界面容器 */
+.game-container{
+    width: var(--w2);
+    height: var(--w2);
+    position: relative;
+    margin-top: 1em;
+    background-color: #bbada0;
+    border-radius: 0.3em;
+    display: grid;
+    /* 将网格对齐到网格容器xxx */
+    align-content:space-evenly;
+    justify-content: space-evenly;
+    /* 有几列，每列有多大 */
+    grid-template-columns: calc(100%*var(--cw)) calc(100%*var(--cw)) calc(100%*var(--cw)) calc(100%*var(--cw));
+    /* 有几行，每行有多大 */
+    grid-template-rows: calc(100%*var(--ch)) calc(100%*var(--ch)) calc(100%*var(--ch)) calc(100%*var(--ch));
+    /* 上下间隔10px，左右间隔20px */
+    /* grid-gap: 10px 20px; */
+}
+
+.game-container>div{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.game-container>div>span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: absolute;
+    font-family: 'Times New Roman';
+    border-radius: 10px;
+}
+
+.game-container>div>span:nth-child(2) {
+    opacity: 0;
+}
+
+.grid-cell-def {
+    background: rgba(238,228,218,0.35);
+}
+
+.grid-2{
+    background: #eee4da;
+    color: #776e65;
+    font-size: 3em;
+}
+
+.grid-4{
+    background: #ede0c8;
+    color: #776e65;
+    font-size: 3em;
+}
+
+.grid-8{
+    background: #f2b179;
+    color: white;
+    font-size: 3em;
+    display:none;
+}
+
+.grid-16{
+    background: #f59563;
+    color: white;
+    font-size: 3em;
+    border-radius: 0.1em;
+    display:none;
+}
+
+.grid-32{
+    background: #f67c5f;
+    color: white;
+    font-size: 3em;
+    display:none;
+}
+
+.grid-64{
+    background: #f65e3b;
+    color: white;
+    font-size: 3em;
+    display:none;
+}
+
+.grid-others{
+    background: #edcc61;
+    color: white;
+    font-size: 2.2em;
+    display:none;
+}

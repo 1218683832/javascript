@@ -12,19 +12,94 @@
     <title>2048</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
     <link rel="stylesheet" href="css/2048/2048.css">
-   
+
     <script src="js/2048/jquery-3.3.1.min.js"></script>
-    <script src="js/2048/2048.js"></script>
+    <!-- 强大的display:grid
+        grid-template-columns: 100px 100px; //有几列，每列有多大
+        grid-template-rows :100px 100px; //有几行，每行有多大
+        grid-template: [] '1 1 1' 100px [] /auto 50px auto;
+        //[名称] '几列' 这行的高度 [名称] /三列对应的三个宽度
+        //（名称可为空 '1 1 1' 就是均分三列）
+        grid-gap: 10px 20px ;//上下间隔10px，左右间隔20px
+        grid-column-gap
+        grid-row-gap
+        justify-items
+        align-items
+        justify-content
+        align-content
+    https://www.jianshu.com/p/41c038baf994 -->
 </head>
 
 <body>
+
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
     <script src="" async defer></script>
-    <div></div>
+    <div id="container">
+        <h1 id="game-top">2048</h1>
+        <!-- <div id="game-container">
+            <span class="grid-2">2</span>
+            <span class="grid-2">2</span>
+            <span class="grid-2">4</span>
+            <span class="grid-4">4</span>
+            <span class="grid-8">8</span>
+            <span class="grid-8">8</span>
+            <span class="grid-16">16</span>
+            <span class="grid-16">16</span>
+            <span class="grid-32">32</span>
+            <span class="grid-32">32</span>
+            <span class="grid-64">64</span>
+            <span class="grid-64">64</span>
+            <span class="grid-others">128</span>
+            <span class="grid-2">2</span>
+            <span class="grid-others">512</span>
+            <span class="grid-others">2048</span>
+        </div> -->
+        <div class="game-container">
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-2"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+            <div><span class="grid-cell-def"></span>
+                <span class="grid-cell-def"></span></div>
+        </div>
+        <div id="game-bottom">
+            <span id="btn-new-game">New Game</span>
+        </div>
+    </div>
 </body>
+
+
+<script src="js/2048/2048.js"></script>
+
 </html>
