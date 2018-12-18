@@ -242,6 +242,7 @@ function init() {
             board[i][j] = 0;
         }
     }
+    showGridCell2();
 }
 
 // 创建一个格子
